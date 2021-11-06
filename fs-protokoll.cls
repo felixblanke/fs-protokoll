@@ -271,7 +271,7 @@
 \internettrue
 
 \newif\ifterminliste
-\terminlistefalse
+\terminlistetrue
 
 \newif\iftitel
 \titeltrue
@@ -487,13 +487,12 @@
 {%
 \noindent\itshape Also. Um das hier zu ändern, muss das Kommando {\normalfont \texttt{\textbackslash termtable}} erneuert werden.
 
-	\begin{tabular}{rl}\toprule
-	    Datum                 & Termin \\ \midrule
+	\begin{tabular}{rl}
 		07.01.2021            & Spieleabend \\
 		10.01.2021            & Matheball \\
 		17. -- 18.01.2021     & Fachschaftsfahrt \\
 		21.01.2021            & Spieleabend \\
-		24.--26.01.2021       & KoMa \\ \bottomrule
+		24.--26.01.2021       & KoMa \\
 	\end{tabular}
 }
 
