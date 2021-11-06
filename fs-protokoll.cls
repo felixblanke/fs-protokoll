@@ -141,6 +141,7 @@
 \providecommand* \FS@top@abbrev                 {\FS@lang@error{\FS@top@abbrev}}
 \providecommand* \FS@internetslogan             {\FS@lang@error{\FS@internetslogan}}
 \providecommand* \FS@constituent                {\FS@lang@error{\FS@constituent}}
+\providecommand* \FS@termtable@heading          {\FS@lang@error{\FS@termtable@heading}}
 
 
 \DeclareStringOption[Alter FSR-Vorstand]{oldfsrprefix}
@@ -172,6 +173,7 @@
     \providecaptionname{ngerman}{\FS@top@abbrev}{TOP}%
     \providecaptionname{ngerman}{\FS@internetslogan}{Alle Protokolle\\im Internet:}%
     \providecaptionname{ngerman}{\FS@constituent}{konstituierenden}%
+    \providecaptionname{ngerman}{\FS@termtable@heading}{Kommende Termine}%
 %
     \providecaptionname{english}{\FS@drafttext}{Draft}%
     \providecaptionname{english}{\FS@attendingmembers@title}{Present members:}%
@@ -197,6 +199,7 @@
     \providecaptionname{english}{\FS@top@abbrev}{AI}%
     \providecaptionname{english}{\FS@internetslogan}{All minutes\\on the internet:}%
     \providecaptionname{english}{\FS@constituent}{constituent}%
+    \providecaptionname{english}{\FS@termtable@heading}{Upcoming dates}%
 }
 
 \ifFS@draft
@@ -500,7 +503,7 @@
 	\parbox[t]{\termwidth}{\vspace{1mm}
 	{
 		\vspace{2.5ex}
-		\centerline{\large\bfseries Kommende Termine}}
+		\centerline{\large\bfseries \FS@termtable@heading}}
 		\vspace{2ex}
 		%\hspace{3ex}
 		\linespread{1.3}\selectfont\termtable
