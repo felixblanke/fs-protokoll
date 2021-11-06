@@ -26,6 +26,8 @@
 
 \DeclareStringOption[-1.25cm]{TOPindent}
 
+\DeclareStringOption[fs-logo-transparent.png]{logofile}
+
 \DeclareBoolOption[false]{hyphens}
 
 \DeclareStringOption[none]{gremium}
@@ -420,7 +422,7 @@
   align=tr,
   area={\dimexpr \paperwidth-\disttobordereast\relax}{\disttobordernorth}{\logosize}{\logosize},
   contents={%
-    \includegraphics[width=\logosize]{fs-logo-transparent.png}
+    \includegraphics[width=\logosize]{\FS@logofile}
     \ifinternet
         \vspace{1\parskip}
         \begin{flushright}
