@@ -279,6 +279,9 @@
 \newif\iftitel
 \titeltrue
 
+\newif\iffsrvorstandunterschrift
+\fsrvorstandunterschrifttrue
+
 \newcommand \FS@date           {{\itshape Benutze {\normalfont \texttt{\textbackslash date}}, um das Sitzungsdatum zu setzen.}}
 \newcommand \FS@leiter         {{\itshape Benutze {\normalfont \texttt{\textbackslash leiter}}, um den Leiter zu setzen.}}
 \newcommand \FS@protokollant   {{\itshape Benutze {\normalfont \texttt{\textbackslash protokollant}}, um den Protokollanten zu setzen.}}
@@ -659,14 +662,16 @@
         	&& \scriptsize \FS@minutestaker@title\\
         \end{tabularx}
         \ifkonsti
-            \\[2cm]
-            \begin{tabularx}{\textwidth}{Xp{2cm}X@{}}
-            	\cmidrule{1-1}\cmidrule{3-3}
-            	   \scriptsize\parbox[t]{\linewidth}{\FS@oldfsr}
-                && \scriptsize\parbox[t]{\linewidth}{\FS@newfsr} \\
-            	   \scriptsize \FS@fsr@oldboard
-            	&& \scriptsize\FS@fsr@newboard\\
-            \end{tabularx}
+            \iffsrvorstandunterschrift
+                \\[2cm]
+                \begin{tabularx}{\textwidth}{Xp{2cm}X@{}}
+                    \cmidrule{1-1}\cmidrule{3-3}
+                    \scriptsize\parbox[t]{\linewidth}{\FS@oldfsr}
+                    && \scriptsize\parbox[t]{\linewidth}{\FS@newfsr} \\
+                       \scriptsize \FS@fsr@oldboard
+                    && \scriptsize\FS@fsr@newboard\\
+                \end{tabularx}
+            \fi
         \fi
         \end{addmargin}
     \fi
