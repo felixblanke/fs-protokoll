@@ -262,7 +262,7 @@
 \leitungtrue
 
 \newif\ifunterschrift
-\unterschriftfalse
+\unterschrifttrue
 
 \newif\iffusszeile
 \fusszeiletrue
