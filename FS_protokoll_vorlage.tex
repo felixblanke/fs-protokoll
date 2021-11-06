@@ -1,0 +1,102 @@
+\documentclass[
+    gremium=FSV, % Gremium: FSR, FSV oder weglassen
+    english,      % Sprache: ngerman oder english
+    wideoverview, % weite Übersicht anschalten
+    %raggedtitle, % rechtsbündigen Titel anschalten
+    %draft,       % als Entwurf kennzeichnen
+]{fs-protokoll}
+
+
+\date{XX.XX.2021}
+\leiter{Erika Musterfrau} %Sitzungsleitung
+\protokollant{Max Mustermann}
+\beginn{ Uhr}
+\Ende{ Uhr}
+\mitglieder{Kim \enquote{Toller Spitzname} Nguyen}
+\fehlende{-} %Unentschuldigt fehlende Mitglieder des Organs
+
+\entfehlende{} %Entschludigt fehlende Mitglieder des Organs
+
+\anwesende{} %Anwesende, die nicht zum Organ gehören
+
+%
+% EINSTELLUNGEN:
+%
+
+% Für eine konstituierende FSV-Sitzung:
+%\konstitrue
+
+% Zeige ordentliche/außerordentliche Sitzung an
+%\useordentlichetrue
+% Setze in dem Fall die Sitzungsnummer:
+%\sitzungsnr{1}
+
+% Falls es eine außerordentliche Sitzung ist: 
+%\ordentlichesitzungfalse
+
+% Falls keine Terminliste gezeigt werden soll:
+\terminlistefalse
+
+% Falls ein anderes Gremium außer FSR/FSV protokolliert wird:
+%\gremiumprefix{des} % Stellt den Artikel für "Sitzung [Präfix] Gremiums" ein
+%\gremiums{Wahlausschuss} % Name des protokollierten Gremiums (im Genitiv)
+
+
+\begin{document}
+
+\TOP{Eröffnung und Begrüßung (Anfangsuhrzeit -- Enduhrzeit Uhr)}
+
+\TOP{Festlegung der Tagesordnung (Anfangsuhrzeit -- Enduhrzeit Uhr)}
+
+\TOP{Protokolle (Anfangsuhrzeit -- Enduhrzeit Uhr)}
+
+\TOP{Berichte (Anfangsuhrzeit -- Enduhrzeit Uhr)}
+\begin{description}
+\item[FSR] Hier ein Bericht aus dem FSR
+\item[weiterer Bericht] Hier ein toller Bericht
+\item[noch ein Bericht] Ganz spannende Dinge werden berichtet.
+\end{description}
+
+\TOP{Gremien (Anfangsuhrzeit -- Enduhrzeit Uhr)}
+
+\TOP{%Titel des Tops (Anfangsuhrzeit-Enduhrzeit Uhr)
+}
+
+%Inhalt des Tops
+
+\enquote{Anführungsstriche} %Das hier steht in Anführungszeichen
+
+\sitzungsbreak{endlich protokolliert wer vernünftiges} % Hervorheben von Sitzungspause, Redeleitungswechel, Protokollierendenwechsel, Wiederaufnahme eines Tops
+
+\begin{nominationtable}
+    wird nominiert        &   nominiert   & Ja\\
+    das können           &   auch mehrere sein   & will aber nicht\\
+\end{nominationtable}
+        
+
+% \begin{electiontable}{2 %hier steht die Anzahl der Wahlgänge
+% }
+%             Kandidat 1  & Stimmen im 1.Wahlgang & Stimmen 2.Wahlgang\\
+%             easy win & 6 & 8\\
+%             War auch dabei           & 4 & 0\\
+%             Enthaltung      & 0 & 2\\
+%         \end{electiontable}
+
+\begin{antragstable}{1} %Anzahl weitere Spalten
+    Antrag & Stimmen\\\midrule
+    Ja          & Anzahl Stimmen\\
+    Nein        & Anzahl Stimmen\\
+    Enthaltung  & Anzahl Stimmen\\
+\end{antragstable}
+
+%Meinungsbild zu ...
+\begin{center}
+\begin{tabular}{c|c|c} 
+    \textbf{Option 1} & \textbf{Option 2} & \textbf{Enthaltung}\\ \hline 
+     Stimmen 1 & Stimmen 2 & Stimmen E
+\end{tabular}
+\end{center}
+
+
+\TOP{Sonstiges}
+\end{document}
