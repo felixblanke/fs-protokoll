@@ -560,21 +560,23 @@
     \par\endgroup%
 }
 
+\providecommand{\FS@gremiumprefix}{\texttt{\textbackslash gremiumprefix}}
+
+\expandafter\ifstrequal\expandafter{\FS@gremium}{FSR}{%
+    \def\FS@gremiumprefix{\FS@fsr@prefix}%
+    \gremiums{FSR}%
+    \unterschrifttrue%
+}{}
+
+\expandafter\ifstrequal\expandafter{\FS@gremium}{FSV}{%
+    \def\FS@gremiumprefix{\FS@fsv@prefix}%
+    \gremiums{FSV}%
+    \unterschrifttrue%
+}{}
+
 
 \AtBeginDocument{
     \thispagestyle{firstpage}
-
-    \providecommand{\FS@gremiumprefix}{\texttt{\textbackslash gremiumprefix}}
-    \expandafter\ifstrequal\expandafter{\FS@gremium}{FSR}{%
-        \def\FS@gremiumprefix{\FS@fsr@prefix}%
-        \gremiums{FSR}%
-        \unterschrifttrue%
-    }{}
-    \expandafter\ifstrequal\expandafter{\FS@gremium}{FSV}{%
-        \def\FS@gremiumprefix{\FS@fsv@prefix}%
-        \gremiums{FSV}%
-        \unterschrifttrue%
-    }{}
 
 	\ifdefined\FS@titel
 	\else
