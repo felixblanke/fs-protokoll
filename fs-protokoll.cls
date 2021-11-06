@@ -28,7 +28,7 @@
 
 \DeclareStringOption[fs-logo-transparent.png]{logofile}
 
-\DeclareBoolOption[false]{hyphens}
+\DeclareBoolOption{hyphens}
 
 \DeclareStringOption[none]{gremium}
 
