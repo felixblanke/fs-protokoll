@@ -119,7 +119,6 @@
 }
 
 \providecommand* \FS@drafttext                  {\FS@lang@error{\FS@drafttext}}
-
 \providecommand* \FS@attendingmembers@title     {\FS@lang@error{\FS@attendingmembers@title}}
 \providecommand* \FS@attending@title            {\FS@lang@error{\FS@attending@title}}
 \providecommand* \FS@attending@titlewithmembers {\FS@lang@error{\FS@attending@titlewithmembers}}
@@ -145,9 +144,6 @@
 \providecommand* \FS@constituent                {\FS@lang@error{\FS@constituent}}
 \providecommand* \FS@termtable@heading          {\FS@lang@error{\FS@termtable@heading}}
 
-
-\DeclareStringOption[Alter FSR-Vorstand]{oldfsrprefix}
-\DeclareStringOption[Neuer FSR-Vorstand]{newfsrprefix}
 
 \AtBeginDocument{%
     \providecaptionname{ngerman}{\FS@drafttext}{Entwurf}%
@@ -361,7 +357,6 @@
 \newcommand \oldfsr [1]        {\renewcommand{\FS@oldfsr}{#1}}
 \newcommand \newfsr [1]        {\renewcommand{\FS@newfsr}{#1}}
 \newcommand \gremiumprefix [1] {\def\FS@gremiumprefix {#1}}
-
 
 \newcommand \anhang [1] {\newcommand\FS@following{#1}}
 
