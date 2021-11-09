@@ -291,8 +291,8 @@
 \newcommand \FS@gremiums       {{\color{red}Wähle über die Option \texttt{gremiumflag=FSR} bzw. \texttt{gremiumflag=FSV} ein Gremium aus oder gib ein anderes an über \texttt{\textbackslash gremiums}}}
 \newcommand \FS@oldfsr         {\texttt{\textbackslash oldfsr}}
 \newcommand \FS@newfsr         {\texttt{\textbackslash newfsr}}
-\newcommand \FS@fehlende       {\texttt{\textbackslash fehlende}}
-\newcommand \FS@entfehlende    {\texttt{\textbackslash entfehlende}}
+%\newcommand \FS@fehlende       {\texttt{\textbackslash fehlende}}
+%\newcommand \FS@entfehlende    {\texttt{\textbackslash entfehlende}}
 
 
 \NewDocumentCommand \leiter {o m} {%
