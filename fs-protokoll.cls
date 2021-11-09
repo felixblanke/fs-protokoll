@@ -296,6 +296,7 @@
 
 
 \NewDocumentCommand \leiter {o m} {%
+	\providecommand\FS@leiter{}%
 	\renewcommand \FS@leiter {#2}%
 	\IfValueT {#1} {%
         \renewcaptionname{\languagename}{\FS@head@title}{#1}%
@@ -303,6 +304,7 @@
 }
 
 \NewDocumentCommand \protokollant {o m} {%
+	\providecommand\FS@protokollant{}%
 	\renewcommand \FS@protokollant {#2}%
 	\IfValueT {#1} {%
         \renewcaptionname{\languagename}{\FS@minutestaker@title}{#1}%
@@ -310,6 +312,7 @@
 }
 
 \NewDocumentCommand \mitglieder {o m} {%
+	\providecommand\FS@mitglieder{}%
 	\renewcommand{\FS@mitglieder}{#2} %
 	\IfValueT {#1} {%
 	    \renewcaptionname{\languagename}{\FS@attendingmembers@title}{#1}%
@@ -318,6 +321,7 @@
 }
 	
 \NewDocumentCommand \anwesende {o m} {%
+	\providecommand\FS@anwesende{}%
 	\renewcommand{\FS@anwesende}{#2}%
 	\IfValueT {#1} {%
 	    \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
@@ -325,12 +329,14 @@
 }
 
 \NewDocumentCommand \entfehlende {o m} {%
+	\providecommand\FS@entfehlende{}%
 	\renewcommand\FS@entfehlende{#2}%
 	\IfValueT {#1} {%
 	    \renewcaptionname{\languagename}{\FS@excmissing@title}{#1}%
 	}%
 }
 \NewDocumentCommand \fehlende {o m} {%
+	\providecommand\FS@fehlende{}%
 	\renewcommand\FS@fehlende{#2}%
     \IfValueT {#1} {%
 	    \renewcaptionname{\languagename}{\FS@missing@title}{#1}%
