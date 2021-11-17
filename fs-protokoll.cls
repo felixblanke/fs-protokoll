@@ -70,6 +70,7 @@
 \RequirePackage{babel}          % localization
 
 \RequirePackage{xparse}         % allow improved definition of commands
+\RequirePackage{environ}		% allow improved definition of new environments 
 \RequirePackage{mathtools}      % default math commands, loads amsmath internally
 \RequirePackage{microtype}      % improved micro-typography: character protrusion and font expansion are enabled by default.
 
@@ -129,7 +130,9 @@
 \providecommand* \FS@beginn@title               {\FS@lang@error{\FS@beginn@title}}
 \providecommand* \FS@ende@title                 {\FS@lang@error{\FS@ende@title}}
 \providecommand* \FS@date@prefix                {\FS@lang@error{\FS@date@prefix}}
+\providecommand* \FS@minutes@prefixtitle		{\FS@lang@error{\FS@minutes@prefixtitle}}
 \providecommand* \FS@minutes@title              {\FS@lang@error{\FS@minutes@title}}
+\providecommand* \FS@minutes@titlenonpublic     {\FS@lang@error{\FS@minutes@titlenonpublic}}
 \providecommand* \FS@session@title              {\FS@lang@error{\FS@session@title}}
 \providecommand* \FS@session@shorttitle         {\FS@lang@error{\FS@session@shorttitle}}
 \providecommand* \FS@session@regular            {\FS@lang@error{\FS@session@regular}}
@@ -157,7 +160,9 @@
     \providecaptionname{ngerman}{\FS@beginn@title}{Beginn:}%
     \providecaptionname{ngerman}{\FS@ende@title}{Ende:}%
     \providecaptionname{ngerman}{\FS@date@prefix}{vom}%
+    \providecaptionname{ngerman}{\FS@minutes@prefixtitle}{Unöffentliches}%
     \providecaptionname{ngerman}{\FS@minutes@title}{Protokoll}%
+    \providecaptionname{ngerman}{\FS@minutes@titlenonpublic}{Protokoll}%
     \providecaptionname{ngerman}{\FS@session@title}{Sitzung}%
     \providecaptionname{ngerman}{\FS@session@title}{Sitzung}%
     \providecaptionname{ngerman}{\FS@session@shorttitle}{-Sitzung}%
@@ -184,6 +189,8 @@
     \providecaptionname{english}{\FS@beginn@title}{Begin:}%
     \providecaptionname{english}{\FS@ende@title}{End:}%
     \providecaptionname{english}{\FS@date@prefix}{on}%
+    \providecaptionname{english}{\FS@minutes@prefixtitle}{Non-public}%
+    \providecaptionname{english}{\FS@minutes@titlenonpublic}{minutes}%
     \providecaptionname{english}{\FS@minutes@title}{Minutes}%
     \providecaptionname{english}{\FS@session@title}{session}%
     \providecaptionname{english}{\FS@session@shorttitle}{ session}%
@@ -255,6 +262,9 @@
 
 \newif\ifordentlichesitzung
 \ordentlichesitzungtrue
+
+\newif\ifoeffentlichesprotokoll
+\oeffentlichesprotokolltrue
 
 \newif\ifmitgliederliste
 \mitgliederlistetrue
@@ -363,6 +373,14 @@
 \newcommand \oldfsr [1]        {\renewcommand{\FS@oldfsr}{#1}}
 \newcommand \newfsr [1]        {\renewcommand{\FS@newfsr}{#1}}
 \newcommand \gremiumprefix [1] {\def\FS@gremiumprefix {#1}}
+
+%Defines an environment which is visible only if oeffentlichesprotokollfalse
+\NewEnviron{nichtoeff}{
+	\ifoeffentlichesprotokoll
+	\else
+		\BODY
+	\fi
+}
 
 \newcommand \anhang [1] {\newcommand\FS@following{#1}}
 
@@ -581,13 +599,18 @@
 }{}
 
 
+
 \AtBeginDocument{
     \thispagestyle{firstpage}
 
 	\ifdefined\FS@titel
 	\else
 	  \ifkonsti
-	    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
+	    \ifoeffentlichesprotokoll
+	    	\newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
+	    \else
+	    	\newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
+	    \fi
 	  \else
 	      \ifuseordentliche
             \ifordentlichesitzung
@@ -595,9 +618,17 @@
             \else
               \newcommand \FS@sitzungsart {\FS@session@special}
             \fi
-            \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart\ \FS@session@title{} \FS@gremiumprefix\ \FS@gremiums}
+            \ifoeffentlichesprotokoll
+            	\newcommand \FS@titel { \FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart\ \FS@session@title{} \FS@gremiumprefix\ \FS@gremiums}
+            \else
+            	\newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart\ \FS@session@title{} \FS@gremiumprefix\ \FS@gremiums}
+            \fi
           \else
-            \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+          	\ifoeffentlichesprotokoll
+          		\newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+          	\else
+          		\newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+          	\fi
           \fi
       \fi
 	\fi
