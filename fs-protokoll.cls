@@ -637,7 +637,6 @@
         \fbox{\termine}%
         }%
     \fi%
-    \logobox
     \vspace{1cm}
 
     \ifFS@raggedtitle%
