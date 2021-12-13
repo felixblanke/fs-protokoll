@@ -57,47 +57,47 @@
     fontsize=\FS@fontsize%
 }
 
-\RequirePackage{iftex}%       % check if one is using pdftex
+\RequirePackage{iftex}%            % check if one is using pdftex
 \ifpdftex
-  \wlog{PDF LaTeX detected}
-  \RequirePackage[utf8]{inputenc}% Input-Encoding UTF-8
-  \RequirePackage[T1]{fontenc}   % Font-Encoding
-  \RequirePackage{lmodern}       % Latin Modern Font
-\else                         % Lua/XeTex detected
-  \RequirePackage{fontspec}      % Loads Latin Modern internally
+    \wlog{PDF LaTeX detected}
+    \RequirePackage[utf8]{inputenc}% Input-Encoding UTF-8
+    \RequirePackage[T1]{fontenc}%  % Font-Encoding
+    \RequirePackage{lmodern}%      % Latin Modern Font
+\else                              % Lua/XeTex detected
+    \RequirePackage{fontspec}      % Loads Latin Modern internally
 \fi
 
-\RequirePackage{babel}          % localization
+\RequirePackage{babel}             % localization
 
-\RequirePackage{xparse}         % allow improved definition of commands
-\RequirePackage{environ}		% allow improved definition of new environments 
-\RequirePackage{mathtools}      % default math commands, loads amsmath internally
-\RequirePackage{microtype}      % improved micro-typography: character protrusion and font expansion are enabled by default.
+\RequirePackage{xparse}            % allow improved definition of commands
+\RequirePackage{environ}           % allow improved definition of new environments
+\RequirePackage{mathtools}         % default math commands, loads amsmath internally
+\RequirePackage{microtype}         % improved micro-typography: character protrusion and font expansion are enabled by default.
 
-\RequirePackage[%               % for a more colorful life
-    dvipsnames%                 %     give more colors a name
+\RequirePackage[%                  % for a more colorful life
+    dvipsnames%                    %     give more colors a name
 ]{xcolor}
-\RequirePackage{graphicx}       % allow embedding of images
-\RequirePackage{pdfpages}       % allow embedding of pdf documents
-\RequirePackage[%               % improved quotation marks
-    autostyle%                  % use correct quotation mark style for each language
-]{csquotes}                     % 
+\RequirePackage{graphicx}          % allow embedding of images
+\RequirePackage{pdfpages}          % allow embedding of pdf documents
+\RequirePackage[%                  % improved quotation marks
+    autostyle%                     % use correct quotation mark style for each language
+]{csquotes}                        %
 
-\RequirePackage{eurosym}        % allow use of official euro sign
-\RequirePackage{soul}           % highlighting of text
+\RequirePackage{eurosym}           % allow use of official euro sign
+\RequirePackage{soul}              % highlighting of text
 
-\RequirePackage[%               % improved lists
-    shortlabels%                %     allows shorthand notation (like enumerate package)
+\RequirePackage[%                  % improved lists
+    shortlabels%                   %     allows shorthand notation (like enumerate package)
 ]{enumitem}
 
-\RequirePackage{booktabs}       % improved tabulars
-\RequirePackage{tabularx}       % tabulars with varying width
+\RequirePackage{booktabs}          % improved tabulars
+\RequirePackage{tabularx}          % tabulars with varying width
 
-\RequirePackage{calc}           % allow specification of length via arithmetic expressions
-\RequirePackage{etoolbox}       % more tools for writing a LaTeX class
+\RequirePackage{calc}              % allow specification of length via arithmetic expressions
+\RequirePackage{etoolbox}          % more tools for writing a LaTeX class
 
 \ifFS@hyphens
-    % Pass option "hyphens" to the package url which is loaded internally in hyperref to allow url breaking after a hyphen.    
+    % Pass option "hyphens" to the package url which is loaded internally in hyperref to allow url breaking after a hyphen.
     \PassOptionsToPackage{hyphens}{url}
 \fi
 
@@ -106,17 +106,17 @@
 %%
 
 \newcommand*{\FS@lang@error}[1]{%
-  \ClassError{fs-protokoll}{%
-    current language not supported%
-  }{%
-    Currently fs-protokoll only supports languages ``ngerman'' and
-    ``english''.\MessageBreak
-    It seems, that you are using another language (maybe
-    \languagename).\MessageBreak
-    Because of this you have to define \string#1\space by
-    yourself!\MessageBreak
-  }%
-  \textbf{??}%
+    \ClassError{fs-protokoll}{%
+        current language not supported%
+    }{%
+        Currently fs-protokoll only supports languages ``ngerman'' and
+        ``english''.\MessageBreak
+        It seems, that you are using another language (maybe
+        \languagename).\MessageBreak
+        Because of this you have to define \string#1\space by
+        yourself!\MessageBreak
+    }%
+    \textbf{??}%
 }
 
 \providecommand* \FS@drafttext                  {\FS@lang@error{\FS@drafttext}}
@@ -130,7 +130,7 @@
 \providecommand* \FS@beginn@title               {\FS@lang@error{\FS@beginn@title}}
 \providecommand* \FS@ende@title                 {\FS@lang@error{\FS@ende@title}}
 \providecommand* \FS@date@prefix                {\FS@lang@error{\FS@date@prefix}}
-\providecommand* \FS@minutes@prefixtitle		{\FS@lang@error{\FS@minutes@prefixtitle}}
+\providecommand* \FS@minutes@prefixtitle        {\FS@lang@error{\FS@minutes@prefixtitle}}
 \providecommand* \FS@minutes@title              {\FS@lang@error{\FS@minutes@title}}
 \providecommand* \FS@minutes@titlenonpublic     {\FS@lang@error{\FS@minutes@titlenonpublic}}
 \providecommand* \FS@session@title              {\FS@lang@error{\FS@session@title}}
@@ -211,7 +211,7 @@
     % draft watermark
     \RequirePackage{draftwatermark}
     \SetWatermarkText{\FS@drafttext}
-    
+
     % Use draft mode of KoMa class
     \KOMAoptions{draft}
 \fi
@@ -306,61 +306,61 @@
 
 
 \NewDocumentCommand \leiter {o m} {%
-	\providecommand\FS@leiter{}%
-	\renewcommand \FS@leiter {#2}%
-	\IfValueT {#1} {%
+    \providecommand\FS@leiter{}%
+    \renewcommand \FS@leiter {#2}%
+    \IfValueT {#1} {%
         \renewcaptionname{\languagename}{\FS@head@title}{#1}%
     }%
 }
 
 \NewDocumentCommand \protokollant {o m} {%
-	\providecommand\FS@protokollant{}%
-	\renewcommand \FS@protokollant {#2}%
-	\IfValueT {#1} {%
+    \providecommand\FS@protokollant{}%
+    \renewcommand \FS@protokollant {#2}%
+    \IfValueT {#1} {%
         \renewcaptionname{\languagename}{\FS@minutestaker@title}{#1}%
     }%
 }
 
 \NewDocumentCommand \mitglieder {o m} {%
-	\providecommand\FS@mitglieder{}%
-	\renewcommand{\FS@mitglieder}{#2} %
-	\IfValueT {#1} {%
-	    \renewcaptionname{\languagename}{\FS@attendingmembers@title}{#1}%
-	}%
-%	\mitgliederlistetrue %
+    \providecommand\FS@mitglieder{}%
+    \renewcommand{\FS@mitglieder}{#2} %
+    \IfValueT {#1} {%
+        \renewcaptionname{\languagename}{\FS@attendingmembers@title}{#1}%
+    }%
+    \mitgliederlistetrue %
 }
-	
+
 \NewDocumentCommand \anwesende {o m} {%
-	\providecommand\FS@anwesende{}%
-	\renewcommand{\FS@anwesende}{#2}%
-	\IfValueT {#1} {%
-	    \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
-	}%
+    \providecommand\FS@anwesende{}%
+    \renewcommand{\FS@anwesende}{#2}%
+    \IfValueT {#1} {%
+        \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
+    }%
 }
 
 \NewDocumentCommand \entfehlende {o m} {%
-	\providecommand\FS@entfehlende{}%
-	\renewcommand\FS@entfehlende{#2}%
-	\IfValueT {#1} {%
-	    \renewcaptionname{\languagename}{\FS@excmissing@title}{#1}%
-	}%
+    \providecommand\FS@entfehlende{}%
+    \renewcommand\FS@entfehlende{#2}%
+    \IfValueT {#1} {%
+        \renewcaptionname{\languagename}{\FS@excmissing@title}{#1}%
+    }%
 }
 \NewDocumentCommand \fehlende {o m} {%
-	\providecommand\FS@fehlende{}%
-	\renewcommand\FS@fehlende{#2}%
+    \providecommand\FS@fehlende{}%
+    \renewcommand\FS@fehlende{#2}%
     \IfValueT {#1} {%
-	    \renewcaptionname{\languagename}{\FS@missing@title}{#1}%
-	}%
+        \renewcaptionname{\languagename}{\FS@missing@title}{#1}%
+    }%
 }
 
 \AtBeginDocument{
     \ifmitgliederliste
         \RenewDocumentCommand \anwesende {o m} {%
-		    \renewcommand{\FS@anwesende}{#2}%
-		    \IfValueT {#1} {%
-	            \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
-	        }%
-	    }
+            \renewcommand{\FS@anwesende}{#2}%
+            \IfValueT {#1} {%
+                \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
+            }%
+        }
     \fi
 }
 
@@ -375,11 +375,11 @@
 \newcommand \gremiumprefix [1] {\def\FS@gremiumprefix {#1}}
 
 %Defines an environment which is visible only if oeffentlichesprotokollfalse
-\NewEnviron{nichtoeff}{
-	\ifoeffentlichesprotokoll
-	\else
-		\BODY
-	\fi
+\NewEnviron{nichtoeff}{%
+    \ifoeffentlichesprotokoll%
+    \else%
+        \BODY%
+    \fi%
 }
 
 \newcommand \anhang [1] {\newcommand\FS@following{#1}}
@@ -390,11 +390,11 @@
 
 \pagestyle{scrheadings}
 \cfoot{
-	\iffusszeile
-			\footnotesize \FS@titel~\FS@date@prefix~\FS@date\\
-	\fi
-	Seite \thepage
-	}
+    \iffusszeile
+            \footnotesize \FS@titel~\FS@date@prefix~\FS@date\\
+    \fi
+    Seite \thepage
+    }
 \ofoot{}
 \ifoot{}
 
@@ -406,26 +406,27 @@
 \newcommand*\bfoldmarkvpos{.67\paperheight}
 
 \newcommand*\leftmarkline[1]{%
-  \parbox[c][\layerheight][b]{\layerwidth}{%
-    \hspace*{\markhpos}\rule{#1}{\markthickness}%
-}}
+    \parbox[c][\layerheight][b]{\layerwidth}{%
+        \hspace*{\markhpos}\rule{#1}{\markthickness}%
+    }%
+}
 \newif\ifFoldmark\Foldmarktrue
 \newif\ifPunchmark\Punchmarktrue
 \DeclareNewLayer[{
-  background,
-  innermargin,
-  oddpage,% in twoside mode only on odd pages!
-  height=\tfoldmarkvpos,
-  contents={\ifFoldmark\leftmarkline{\foldmarklength}\fi}
+    background,
+    innermargin,
+    oddpage,% in twoside mode only on odd pages!
+    height=\tfoldmarkvpos,
+    contents={\ifFoldmark\leftmarkline{\foldmarklength}\fi}
 }]{tfoldmark}
 \DeclareNewLayer[{
-  clone=tfoldmark,
-  height=\bfoldmarkvpos
+    clone=tfoldmark,
+    height=\bfoldmarkvpos
 }]{bfoldmark}
 \DeclareNewLayer[{
-  clone=tfoldmark,
-  height=.5\paperheight,
-  contents={\ifPunchmark\leftmarkline{\punchmarklength}\fi}
+    clone=tfoldmark,
+    height=.5\paperheight,
+    contents={\ifPunchmark\leftmarkline{\punchmarklength}\fi}
 }]{punchmark}
 
 \newlength{\disttobordernorth}
@@ -437,23 +438,23 @@
 \setlength{\logosize}{28mm}
 
 \DeclareNewLayer[
-  foreground,
-  align=tr,
-  area={\dimexpr \paperwidth-\disttobordereast\relax}{\disttobordernorth}{\logosize}{\logosize},
-  contents={%
-    \includegraphics[width=\logosize]{\FS@logofile}
-    \ifinternet
-        \vspace{1\parskip}
-        \begin{flushright}
-	    \linespread{0.9}\selectfont
-	    \begingroup\footnotesize\hypersetup{urlcolor=black}
-	        \FS@internetslogan\\[1ex]
-	        \href{https://fsmath.uni-bonn.de}{fsmath.uni-bonn.de}
-	        %\url{fsmath.uni-bonn.de}
-	    \endgroup
-	    \end{flushright}
-    \fi
-}
+    foreground,
+    align=tr,
+    area={\dimexpr \paperwidth-\disttobordereast\relax}{\disttobordernorth}{\logosize}{\logosize},
+    contents={%
+        \includegraphics[width=\logosize]{\FS@logofile}
+        \ifinternet%
+            \vspace{1\parskip}%
+            \begin{flushright}%
+                \linespread{0.9}\selectfont%
+                \begingroup\footnotesize\hypersetup{urlcolor=black}%
+                    \FS@internetslogan\\[1ex]
+                    \href{https://fsmath.uni-bonn.de}{fsmath.uni-bonn.de}
+                    %\url{fsmath.uni-bonn.de}
+                \endgroup%
+            \end{flushright}%
+        \fi%
+    }
 ]{box-logo}
 
 \DeclareLayer[clone=scrheadings.foot.oneside]{customfoot1}
@@ -476,22 +477,22 @@
 
 % link colors
 \hypersetup{%
-	colorlinks=true,%
-	linkcolor=orange,%
-	citecolor=olive,%
-	urlcolor=cyan%
+    colorlinks=true,%
+    linkcolor=orange,%
+    citecolor=olive,%
+    urlcolor=cyan%
 }
 
 \DeclareNewSectionCommand[%
     level=1,
-    afterskip=-1\parskip,          % Abstand nach dem TOP
-    beforeskip=0pt,          % Abstand vor dem TOP
-    font=\normalsize,        % Schriftgrösse
-    indent=\TOPindent,    % Einrückung des TOPs         
-    runin=false,			 % TOP soll freistehen (Text startet also in neuer Zeile)
+    afterskip=-1\parskip,   % Abstand nach dem TOP
+    beforeskip=0pt,         % Abstand vor dem TOP
+    font=\normalsize,       % Schriftgrösse
+    indent=\TOPindent,      % Einrückung des TOPs
+    runin=false,            % TOP soll freistehen (Text startet also in neuer Zeile)
     tocindent=1.5em,
     toclevel=1,
-    tocnumwidth=2.3em,       
+    tocnumwidth=2.3em,
     tocstyle=section,
     style=section
 ]{TOP}
@@ -514,29 +515,26 @@
 {%
 \noindent\itshape Also. Um das hier zu ändern, muss das Kommando {\normalfont \texttt{\textbackslash termtable}} erneuert werden.
 
-	\begin{tabular}{rl}
-		07.01.2021            & Spieleabend \\
-		10.01.2021            & Matheball \\
-		17. -- 18.01.2021     & Fachschaftsfahrt \\
-		21.01.2021            & Spieleabend \\
-		24.--26.01.2021       & KoMa \\
-	\end{tabular}
+    \begin{tabular}{rl}
+        07.01.2021            & Spieleabend \\
+        10.01.2021            & Matheball \\
+        17. -- 18.01.2021     & Fachschaftsfahrt \\
+        21.01.2021            & Spieleabend \\
+        24.--26.01.2021       & KoMa \\
+    \end{tabular}
 }
 
 \newcommand{\termine}{
-	\parbox[t]{\termwidth}{\vspace{1mm}
-	{
-		\vspace{2.5ex}
-		\centerline{\large\bfseries \FS@termtable@heading}}
-		\vspace{2ex}
-		%\hspace{3ex}
-		\linespread{1.3}\selectfont\termtable
-		\vspace{2ex}
-	}
+    \parbox[t]{\termwidth}{\vspace{1mm}
+    {
+        \vspace{2.5ex}
+        \centerline{\large\bfseries \FS@termtable@heading}}
+        \vspace{2ex}
+        %\hspace{3ex}
+        \linespread{1.3}\selectfont\termtable
+        \vspace{2ex}
+    }
 }
-
-
-%TEST
 
 \newcommand{\sitzungsbreak}[1]{%
     \begingroup%
@@ -566,7 +564,7 @@
 %            Kandidierende%
 %            \forloop{ct}{1}{\not{\value{ct} > #1}}%
 %            {%
-%	            & \arabic{ct}. Wahlgang
+%                & \arabic{ct}. Wahlgang
 %            }
 %            \\\midrule%
 %}{%
@@ -599,126 +597,124 @@
 }{}
 
 
-
 \AtBeginDocument{
     \thispagestyle{firstpage}
 
-	\ifdefined\FS@titel
-	\else
-	  \ifkonsti
-	    \ifoeffentlichesprotokoll
-	    	\newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
-	    \else
-	    	\newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
-	    \fi
-	  \else
-	      \ifuseordentliche
-            \ifordentlichesitzung
-              \newcommand \FS@sitzungsart {\FS@session@regular}
-            \else
-              \newcommand \FS@sitzungsart {\FS@session@special}
-            \fi
+    \ifdefined\FS@titel
+    \else
+        \ifkonsti
             \ifoeffentlichesprotokoll
-            	\newcommand \FS@titel { \FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart\ \FS@session@title{} \FS@gremiumprefix\ \FS@gremiums}
+                \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
             \else
-            	\newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart\ \FS@session@title{} \FS@gremiumprefix\ \FS@gremiums}
+                \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
             \fi
-          \else
-          	\ifoeffentlichesprotokoll
-          		\newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
-          	\else
-          		\newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
-          	\fi
-          \fi
-      \fi
-	\fi
-	
-	\noindent
-	\ifterminliste
-		{
-		\setlength \fboxrule {1pt}
-		\fbox{\termine}
-		}
-	\fi
-%	\logobox
-	\vspace{1cm}
-	
-	\ifFS@raggedtitle \def \FS@titleformatting {\raggedright}
-    \else \def \FS@titleformatting {}
+        \else
+            \ifuseordentliche
+                \ifordentlichesitzung
+                    \newcommand \FS@sitzungsart {\FS@session@regular}
+                \else
+                    \newcommand \FS@sitzungsart {\FS@session@special}
+                \fi
+                \ifoeffentlichesprotokoll
+                    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
+                \else
+                    \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
+                \fi
+            \else
+                \ifoeffentlichesprotokoll
+                    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+                \else
+                    \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+                \fi
+            \fi
+        \fi
     \fi
-	\begin{addmargin}[\TOPindent]{0cm}
-	    % formerly: \textwidth - \TOPindentcorrection
-		\parbox[t]{\dimexpr%
-		            % Actual width of the line:
-		            \paperwidth - \oddsidemargin - \logosize - \disttobordereast + \TOPindent
-		            % add some spacing from the Logo
-		            - 0.5\disttobordereast%
-		            \relax}{\Large\bfseries\FS@titleformatting%
-		\FS@titel~\FS@date@prefix~\FS@date}
 
-		\vspace{2\baselineskip}
-		{\def\arraystretch{1.2}
-		\noindent\begin{tabularx}{\textwidth - \TOPindentcorrection}{@{}>{\bfseries}lX@{}}
-			\FS@beginn@title    & \FS@beginn \\[1ex]
-			\FS@ende@title      & \FS@ende \\[1ex]
-			\ifmitgliederliste
-				\FS@attendingmembers@title		& \FS@mitglieder \\[1ex]
-			\fi
-			\FS@attending@title			    & \FS@anwesende \\[1ex]
-			\ifdefined\FS@entfehlende
-				\FS@excmissing@title	& \FS@entfehlende \\[1ex]
-			\fi
-			\ifdefined\FS@fehlende
-				\FS@missing@title	& \FS@fehlende \\[1ex]
-			\fi
-			\ifleitung
-				\FS@head@title:	            & \FS@leiter\\[1ex]
-				\FS@minutestaker@title:			& \FS@protokollant\\[1ex]
-			\fi
-		\end{tabularx}
-		}
-		\vspace{\baselineskip}
-	\end{addmargin}
-	
-	
+    \noindent%
+    \ifterminliste%
+        {%
+        \setlength \fboxrule {1pt}
+        \fbox{\termine}%
+        }%
+    \fi%
+    \logobox
+    \vspace{1cm}
+
+    \ifFS@raggedtitle%
+        \def \FS@titleformatting {\raggedright}
+    \else%
+        \def \FS@titleformatting {}
+    \fi
+    \begin{addmargin}[\TOPindent]{0cm}
+        % formerly: \textwidth - \TOPindentcorrection
+        \parbox[t]{\dimexpr%
+                    % Actual width of the line:
+                    \paperwidth - \oddsidemargin - \logosize - \disttobordereast + \TOPindent
+                    % add some spacing from the Logo
+                    - 0.5\disttobordereast%
+                    \relax}%
+                    {\Large\bfseries\FS@titleformatting \FS@titel~\FS@date@prefix~\FS@date}
+
+        \vspace{2\baselineskip}
+        {%
+            \def\arraystretch{1.2}
+            \noindent\begin{tabularx}{\textwidth - \TOPindentcorrection}{@{}>{\bfseries}lX@{}}
+                \FS@beginn@title               & \FS@beginn       \\[1ex]
+                \FS@ende@title                 & \FS@ende         \\[1ex]
+                \ifmitgliederliste
+                    \FS@attendingmembers@title & \FS@mitglieder   \\[1ex]
+                \fi
+                \FS@attending@title            & \FS@anwesende    \\[1ex]
+                \ifdefined\FS@entfehlende
+                    \FS@excmissing@title       & \FS@entfehlende  \\[1ex]
+                \fi
+                \ifdefined\FS@fehlende
+                    \FS@missing@title          & \FS@fehlende     \\[1ex]
+                \fi
+                \ifleitung
+                    \FS@head@title:            & \FS@leiter       \\[1ex]
+                    \FS@minutestaker@title:    & \FS@protokollant \\[1ex]
+                \fi
+            \end{tabularx}%
+        }
+        \vspace{\baselineskip}
+    \end{addmargin}
 }
 
 \AtEndDocument{
-\ifunterschrift
-    \ifleitung
-        \vspace{2cm}
-        \begin{addmargin}[\TOPindent]{0cm}
-        \begin{tabularx}{\textwidth}{Xp{2cm}X@{}}
-        	\cmidrule{1-1}\cmidrule{3-3}
-        	   \scriptsize\parbox[t]{\linewidth}{\FS@leiter}
-        	&& \scriptsize\parbox[t]{\linewidth}{\FS@protokollant} \\
-        	   \scriptsize \FS@head@title
-        	&& \scriptsize \FS@minutestaker@title\\
-        \end{tabularx}
-        \ifkonsti
-            \iffsrvorstandunterschrift
-                \\[2cm]
+    \ifunterschrift
+        \ifleitung
+            \vspace{2cm}
+            \begin{addmargin}[\TOPindent]{0cm}
                 \begin{tabularx}{\textwidth}{Xp{2cm}X@{}}
                     \cmidrule{1-1}\cmidrule{3-3}
-                    \scriptsize\parbox[t]{\linewidth}{\FS@oldfsr}
-                    && \scriptsize\parbox[t]{\linewidth}{\FS@newfsr} \\
-                       \scriptsize \FS@fsr@oldboard
-                    && \scriptsize\FS@fsr@newboard\\
+                    \scriptsize\parbox[t]{\linewidth}{\FS@leiter}
+                    && \scriptsize\parbox[t]{\linewidth}{\FS@protokollant} \\
+                    \scriptsize \FS@head@title
+                    && \scriptsize \FS@minutestaker@title\\
                 \end{tabularx}
-            \fi
+                \ifkonsti
+                    \iffsrvorstandunterschrift
+                        \\[2cm]
+                        \begin{tabularx}{\textwidth}{Xp{2cm}X@{}}
+                            \cmidrule{1-1}\cmidrule{3-3}
+                            \scriptsize\parbox[t]{\linewidth}{\FS@oldfsr}
+                            && \scriptsize\parbox[t]{\linewidth}{\FS@newfsr} \\
+                            \scriptsize \FS@fsr@oldboard
+                            && \scriptsize\FS@fsr@newboard\\
+                        \end{tabularx}
+                    \fi
+                \fi
+            \end{addmargin}
         \fi
-        \end{addmargin}
     \fi
-\fi
 
+    %reverse indentation as there are no TOPs in the appendix
+    \clearpage
+    \addtolength{\oddsidemargin}{\TOPindent}
+    \addtolength{\textwidth}{-\TOPindent}
 
-
-%reverse indentation as there are no TOPs in the appendix
-\clearpage
-\addtolength{\oddsidemargin}{\TOPindent}
-\addtolength{\textwidth}{-\TOPindent}
-
-\ifdefined\FS@following
-	\FS@following
-\fi
+    \ifdefined\FS@following
+        \FS@following
+    \fi
 }
