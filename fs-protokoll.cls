@@ -611,14 +611,14 @@
         \else
             \ifuseordentliche
                 \ifordentlichesitzung
-                    \newcommand \FS@sitzungsart {\FS@session@regular}
+                    \newcommand \FS@session@type {\FS@session@regular}
                 \else
-                    \newcommand \FS@sitzungsart {\FS@session@special}
+                    \newcommand \FS@session@type {\FS@session@special}
                 \fi
                 \ifoeffentlichesprotokoll
-                    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
+                    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@session@type{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
                 \else
-                    \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@sitzungsart{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
+                    \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@session@type{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
                 \fi
             \else
                 \ifoeffentlichesprotokoll
