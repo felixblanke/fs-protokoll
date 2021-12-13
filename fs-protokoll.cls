@@ -130,9 +130,9 @@
 \providecommand* \FS@beginn@title               {\FS@lang@error{\FS@beginn@title}}
 \providecommand* \FS@ende@title                 {\FS@lang@error{\FS@ende@title}}
 \providecommand* \FS@date@prefix                {\FS@lang@error{\FS@date@prefix}}
-\providecommand* \FS@minutes@prefixtitle        {\FS@lang@error{\FS@minutes@prefixtitle}}
-\providecommand* \FS@minutes@title              {\FS@lang@error{\FS@minutes@title}}
-\providecommand* \FS@minutes@titlenonpublic     {\FS@lang@error{\FS@minutes@titlenonpublic}}
+\providecommand* \FS@minutes@prefix@nonpublic   {\FS@lang@error{\FS@minutes@prefix@nonpublic}}
+\providecommand* \FS@minutes@title@public       {\FS@lang@error{\FS@minutes@title@public}}
+\providecommand* \FS@minutes@title@nonpublic    {\FS@lang@error{\FS@minutes@title@nonpublic}}
 \providecommand* \FS@session@title              {\FS@lang@error{\FS@session@title}}
 \providecommand* \FS@session@shorttitle         {\FS@lang@error{\FS@session@shorttitle}}
 \providecommand* \FS@session@regular            {\FS@lang@error{\FS@session@regular}}
@@ -160,9 +160,9 @@
     \providecaptionname{ngerman}{\FS@beginn@title}{Beginn:}%
     \providecaptionname{ngerman}{\FS@ende@title}{Ende:}%
     \providecaptionname{ngerman}{\FS@date@prefix}{vom}%
-    \providecaptionname{ngerman}{\FS@minutes@prefixtitle}{Unöffentliches}%
-    \providecaptionname{ngerman}{\FS@minutes@title}{Protokoll}%
-    \providecaptionname{ngerman}{\FS@minutes@titlenonpublic}{Protokoll}%
+    \providecaptionname{ngerman}{\FS@minutes@prefix@nonpublic}{Unöffentliches}%
+    \providecaptionname{ngerman}{\FS@minutes@title@public}{Protokoll}%
+    \providecaptionname{ngerman}{\FS@minutes@title@nonpublic}{Protokoll}%
     \providecaptionname{ngerman}{\FS@session@title}{Sitzung}%
     \providecaptionname{ngerman}{\FS@session@title}{Sitzung}%
     \providecaptionname{ngerman}{\FS@session@shorttitle}{-Sitzung}%
@@ -189,9 +189,9 @@
     \providecaptionname{english}{\FS@beginn@title}{Begin:}%
     \providecaptionname{english}{\FS@ende@title}{End:}%
     \providecaptionname{english}{\FS@date@prefix}{on}%
-    \providecaptionname{english}{\FS@minutes@prefixtitle}{Non-public}%
-    \providecaptionname{english}{\FS@minutes@titlenonpublic}{minutes}%
-    \providecaptionname{english}{\FS@minutes@title}{Minutes}%
+    \providecaptionname{english}{\FS@minutes@prefix@nonpublic}{Non-public}%
+    \providecaptionname{english}{\FS@minutes@title@nonpublic}{minutes}%
+    \providecaptionname{english}{\FS@minutes@title@public}{Minutes}%
     \providecaptionname{english}{\FS@session@title}{session}%
     \providecaptionname{english}{\FS@session@shorttitle}{ session}%
     \providecaptionname{english}{\FS@session@regular}{regular}%
@@ -604,9 +604,9 @@
     \else
         \ifkonsti
             \ifoeffentlichesprotokoll
-                \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
+                \newcommand \FS@titel {\FS@minutes@title@public{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
             \else
-                \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
+                \newcommand \FS@titel {\FS@minutes@prefix@nonpublic{} \FS@minutes@title@nonpublic{} \FS@session@prefix{} \FS@constituent{} \FS@gremiums\FS@session@shorttitle}
             \fi
         \else
             \ifuseordentliche
@@ -616,15 +616,15 @@
                     \newcommand \FS@session@type {\FS@session@special}
                 \fi
                 \ifoeffentlichesprotokoll
-                    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@session@type{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
+                    \newcommand \FS@titel {\FS@minutes@title@public{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@session@type{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
                 \else
-                    \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@session@type{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
+                    \newcommand \FS@titel {\FS@minutes@prefix@nonpublic{} \FS@minutes@title@nonpublic{} \FS@session@prefix{} \FS@sitzungsnr.~\FS@session@type{} \FS@session@title{} \FS@gremiumprefix{} \FS@gremiums}
                 \fi
             \else
                 \ifoeffentlichesprotokoll
-                    \newcommand \FS@titel {\FS@minutes@title{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+                    \newcommand \FS@titel {\FS@minutes@title@public{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
                 \else
-                    \newcommand \FS@titel {\FS@minutes@prefixtitle{} \FS@minutes@titlenonpublic{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
+                    \newcommand \FS@titel {\FS@minutes@prefix@nonpublic{} \FS@minutes@title@nonpublic{} \FS@session@prefix{} \FS@gremiums\FS@session@shorttitle{}}
                 \fi
             \fi
         \fi
