@@ -146,6 +146,7 @@
 \providecommand* \FS@internetslogan             {\FS@lang@error{\FS@internetslogan}}
 \providecommand* \FS@constituent                {\FS@lang@error{\FS@constituent}}
 \providecommand* \FS@termtable@heading          {\FS@lang@error{\FS@termtable@heading}}
+\providecommand* \FS@page@title                 {\FS@lang@error{\FS@page@title}}
 
 
 \AtBeginDocument{%
@@ -177,6 +178,7 @@
     \providecaptionname{ngerman}{\FS@internetslogan}{Alle Protokolle\\im Internet:}%
     \providecaptionname{ngerman}{\FS@constituent}{konstituierenden}%
     \providecaptionname{ngerman}{\FS@termtable@heading}{Kommende Termine}%
+    \providecaptionname{ngerman}{\FS@page@title}{Seite}%
 %
     \providecaptionname{english}{\FS@drafttext}{Draft}%
     \providecaptionname{english}{\FS@attendingmembers@title}{Present members:}%
@@ -205,6 +207,7 @@
     \providecaptionname{english}{\FS@internetslogan}{All minutes\\on the internet:}%
     \providecaptionname{english}{\FS@constituent}{constituent}%
     \providecaptionname{english}{\FS@termtable@heading}{Upcoming dates}%
+    \providecaptionname{english}{\FS@page@title}{page}%
 }
 
 \ifFS@draft
@@ -393,7 +396,7 @@
     \iffusszeile
             \footnotesize \FS@titel~\FS@date@prefix~\FS@date\\
     \fi
-    Seite \thepage
+    \FS@page@title~\thepage
     }
 \ofoot{}
 \ifoot{}
