@@ -380,7 +380,25 @@
 \newcommand \gremiums [1]      {\renewcommand{\FS@gremiums}{#1}}
 \newcommand \oldfsr [1]        {\renewcommand{\FS@oldfsr}{#1}}
 \newcommand \newfsr [1]        {\renewcommand{\FS@newfsr}{#1}}
-\newcommand \gremiumprefix [1] {\def\FS@gremiumprefix {#1}}
+\newcommand \gremiumprefix [1] {\renewcommand{\FS@gremiumprefix}{#1}}
+
+%
+% DEFAULT SETTINGS FOR FSR / FSV
+%
+
+\expandafter\ifstrequal\expandafter{\FS@gremium}{FSR}{%
+    \def\FS@gremiumprefix{\FS@fsr@prefix}%
+    \gremiums{FSR}%
+    \unterschrifttrue%
+    \mitgliederlistefalse
+}{}
+
+\expandafter\ifstrequal\expandafter{\FS@gremium}{FSV}{%
+    \def\FS@gremiumprefix{\FS@fsv@prefix}%
+    \gremiums{FSV}%
+    \unterschrifttrue%
+}{}
+
 
 %Defines an environment which is visible only if oeffentlichesprotokollfalse
 \NewEnviron{nichtoeff}{%
@@ -590,20 +608,17 @@
     \par\endgroup%
 }
 
-\providecommand{\FS@gremiumprefix}{\texttt{\textbackslash gremiumprefix}}
-
-\expandafter\ifstrequal\expandafter{\FS@gremium}{FSR}{%
-    \def\FS@gremiumprefix{\FS@fsr@prefix}%
-    \gremiums{FSR}%
-    \unterschrifttrue%
-}{}
-
-\expandafter\ifstrequal\expandafter{\FS@gremium}{FSV}{%
-    \def\FS@gremiumprefix{\FS@fsv@prefix}%
-    \gremiums{FSV}%
-    \unterschrifttrue%
-}{}
-
+\AtBeginDocument{%
+    % we leave \FS@mitglieder and \FS@anwesende undefined by default to check for a user initialization
+    \ifmitgliederliste%
+        % if mitgliederliste is activated, members must be specified
+        % to enforce this, we initialize \FS@mitglieder with the default message how to initialize it
+        \providecommand \FS@mitglieder \default@FS@mitglieder
+    \else
+        % if mitgliederliste is not activated, attendees must be specified
+        \providecommand \FS@anwesende \default@FS@anwesende
+    \fi
+}
 
 \AtBeginDocument{
     \thispagestyle{firstpage}
