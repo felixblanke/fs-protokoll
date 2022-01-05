@@ -681,21 +681,27 @@
         {%
             \def\arraystretch{1.2}
             \noindent\begin{tabularx}{\textwidth - \TOPindentcorrection}{@{}>{\bfseries}lX@{}}
-                \FS@beginn@title               & \FS@beginn       \\[1ex]
-                \FS@ende@title                 & \FS@ende         \\[1ex]
-                \ifmitgliederliste
-                    \FS@attendingmembers@title & \FS@mitglieder   \\[1ex]
+                \FS@beginn@title                        & \FS@beginn        \\[1ex]
+                \FS@ende@title                          & \FS@ende          \\[1ex]
+                \ifmitgliederliste % if mitgliederliste is activated
+                    % Always show the members
+                    \FS@attendingmembers@title          & \FS@mitglieder    \\[1ex]
+                    % Show further attendees if defined
+                    \ifdefined\FS@anwesende
+                        \FS@attending@titlewithmembers  & \FS@anwesende     \\[1ex]
+                    \fi
+                \else
+                    \FS@attending@title                 & \FS@anwesende     \\[1ex]
                 \fi
-                \FS@attending@title            & \FS@anwesende    \\[1ex]
                 \ifdefined\FS@entfehlende
-                    \FS@excmissing@title       & \FS@entfehlende  \\[1ex]
+                    \FS@excmissing@title                & \FS@entfehlende   \\[1ex]
                 \fi
                 \ifdefined\FS@fehlende
-                    \FS@missing@title          & \FS@fehlende     \\[1ex]
+                    \FS@missing@title                   & \FS@fehlende      \\[1ex]
                 \fi
                 \ifleitung
-                    \FS@head@title:            & \FS@leiter       \\[1ex]
-                    \FS@minutestaker@title:    & \FS@protokollant \\[1ex]
+                    \FS@head@title:                     & \FS@leiter        \\[1ex]
+                    \FS@minutestaker@title:             & \FS@protokollant  \\[1ex]
                 \fi
             \end{tabularx}%
         }
