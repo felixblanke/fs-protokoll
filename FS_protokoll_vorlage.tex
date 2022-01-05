@@ -1,6 +1,6 @@
 \documentclass[
     gremium=FSR, % Gremium: FSR, FSV oder weglassen
-    english,      % Sprache: ngerman oder english
+    ngerman,      % Sprache: ngerman oder english
     wideoverview, % weite Übersicht anschalten
     %raggedtitle, % rechtsbündigen Titel anschalten
     %draft,       % als Entwurf kennzeichnen
@@ -13,22 +13,21 @@
 \protokollant{Max Mustermann}
 \beginn{ Uhr}
 \Ende{ Uhr}
-\mitglieder{Kim \enquote{Toller Spitzname} Nguyen}
-\fehlende{-} %Unentschuldigt fehlende Mitglieder des Organs
+\anwesende{} %Anwesende
 
-\entfehlende{} %Entschludigt fehlende Mitglieder des Organs
+% Wird für eine FSR-Sitzung nicht gebraucht:
 
-\anwesende{} %Anwesende, die nicht zum Organ gehören
+% \mitglieder{Kim \enquote{Toller Spitzname} Nguyen} % Mitglieder des Organs
+% \fehlende{} %Unentschuldigt fehlende Mitglieder des Organs
+% \entfehlende{} %Entschludigt fehlende Mitglieder des Organs
+
 
 %
 % EINSTELLUNGEN:
 %
 
-% Für eine konstituierende FSV-Sitzung:
-%\konstitrue
-% Falls die Unterschrift des alten/neuen FSR-Vorsitzes aus dem konsti-Protokoll entfernt werden soll
-%\fsrvorstandunterschriftfalse
-
+% Falls es ein unöffentliches Protkoll werden soll:
+%\oeffentlichesprotokollfalse
 
 % Zeige ordentliche/außerordentliche Sitzung an
 %\useordentlichetrue
@@ -38,20 +37,47 @@
 % Falls es eine außerordentliche Sitzung ist: 
 %\ordentlichesitzungfalse
 
-%Falls es ein unöffentliches Protkoll werden soll:
-%\oeffentlichesprotokollfalse
+% Für konstituierende Sitzungen:
+%\konstitrue
+
+% Für die konstituierende FSV-Sitzung:
+%\oldfsr{} Namen des alten FSR-Vorstands (für die Unterschriften)
+%\oldfsr{} Namen des neuen FSR-Vorstands (für die Unterschriften)
+% Falls die Unterschrift des alten/neuen FSR-Vorsitzes aus dem konsti-Protokoll entfernt werden soll
+%\fsrvorstandunterschriftfalse
+
 
 % Falls ein anderes Gremium außer FSR/FSV protokolliert wird:
 %\gremiumprefix{des} % Stellt den Artikel für "Sitzung [Präfix] Gremiums" ein
 %\gremiums{Wahlausschuss} % Name des protokollierten Gremiums (im Genitiv)
 
-%weitere Einstellungen:
+%
+% WEITERE EINSTELLUNGEN
+%
+
 % \internetfalse      % Schaltet Kommentar zu Protokollen im Internet ab
 % \fusszeilefalse     % Nur noch Seitenzahlen in der Fußzeile
 % \titelfalse         % Macht derzeit gar nichts
 % \leitungfalse       % Schaltet ab, dass es Sitzungsleitung/Protokollierende gibt
 % \unterschriftfalse  % Entfernt die Unterschriftenzeile aus dem Protokoll
+% \mitgliederlistefalse % Schaltet die Aufschlüsselung in Organmitglieder aus (bei FSR standardmäßig aus)
+
+%
+% TERMINLISTE
+%
+
 % \terminlistefalse   % Entfernt die Terminliste
+
+% \renewcommand{\termtable}{%
+%     \begin{tabular}{rl}
+%         07.01.2021            & Spieleabend \\
+%         10.01.2021            & Matheball \\
+%         17. -- 18.01.2021     & Fachschaftsfahrt \\
+%         21.01.2021            & Spieleabend \\
+%         24.--26.01.2021       & KoMa \\
+%     \end{tabular}
+% }
+
 
 \begin{document}
 
