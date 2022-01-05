@@ -342,7 +342,9 @@
     \providecommand\FS@anwesende{}%
     \renewcommand{\FS@anwesende}{#2}%
     \IfValueT {#1} {%
+        % overwrite both versions with the user input
         \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
+        \renewcaptionname{\languagename}{\FS@attending@titlewithmembers}{#1}%
     }%
 }
 
@@ -359,17 +361,6 @@
     \IfValueT {#1} {%
         \renewcaptionname{\languagename}{\FS@missing@title}{#1}%
     }%
-}
-
-\AtBeginDocument{
-    \ifmitgliederliste
-        \RenewDocumentCommand \anwesende {o m} {%
-            \renewcommand{\FS@anwesende}{#2}%
-            \IfValueT {#1} {%
-                \renewcaptionname{\languagename}{\FS@attending@title}{#1}%
-            }%
-        }
-    \fi
 }
 
 \renewcommand \date [1]        {\renewcommand{\FS@date}{#1}}
