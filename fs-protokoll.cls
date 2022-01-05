@@ -293,19 +293,24 @@
 \newif\iffsrvorstandunterschrift
 \fsrvorstandunterschrifttrue
 
+% commands that must be set
 \newcommand \FS@date           {{\itshape Benutze {\normalfont \texttt{\textbackslash date}}, um das Sitzungsdatum zu setzen.}}
-\newcommand \FS@leiter         {{\itshape Benutze {\normalfont \texttt{\textbackslash leiter}}, um den Leiter zu setzen.}}
-\newcommand \FS@protokollant   {{\itshape Benutze {\normalfont \texttt{\textbackslash protokollant}}, um den Protokollanten zu setzen.}}
-\newcommand \FS@mitglieder     {{\itshape Benutze {\normalfont \texttt{\textbackslash mitglieder}}, um die Mitglieder des Gremiums zu setzen oder nutze {\normalfont\texttt{\textbackslash mitgliederlistefalse}} um diese Zeile nicht anzuzeigen.}}
-\newcommand \FS@anwesende      {{\itshape Benutze {\normalfont \texttt{\textbackslash anwesende}}, um die Anwesenden zu setzen.}}
 \newcommand \FS@beginn         {{\itshape Benutze {\normalfont \texttt{\textbackslash beginn}}, um die den Beginn zu setzen.}}
 \newcommand \FS@ende           {{\itshape Benutze {\normalfont \texttt{\textbackslash Ende}}, um das Ende zu setzen.}}
+\newcommand \FS@leiter         {{\itshape Benutze {\normalfont \texttt{\textbackslash leiter}}, um den Leiter zu setzen.}}
+\newcommand \FS@protokollant   {{\itshape Benutze {\normalfont \texttt{\textbackslash protokollant}}, um den Protokollanten zu setzen.}}
 \newcommand \FS@sitzungsnr     {\texttt{\textbackslash sitzungsnr}}
 \newcommand \FS@gremiums       {{\color{red}Wähle über die Option \texttt{gremiumflag=FSR} bzw. \texttt{gremiumflag=FSV} ein Gremium aus oder gib ein anderes an über \texttt{\textbackslash gremiums}}}
 \newcommand \FS@oldfsr         {\texttt{\textbackslash oldfsr}}
 \newcommand \FS@newfsr         {\texttt{\textbackslash newfsr}}
-%\newcommand \FS@fehlende       {\texttt{\textbackslash fehlende}}
-%\newcommand \FS@entfehlende    {\texttt{\textbackslash entfehlende}}
+\providecommand{\FS@gremiumprefix}{\texttt{\textbackslash gremiumprefix}}
+
+% the default@ commands only contain the fallback message with instructions how to initialize them
+% we use them, so we can check if these fields were initialize by a user
+\newcommand \default@FS@mitglieder  {{\itshape Benutze {\normalfont \texttt{\textbackslash mitglieder}}, um die Mitglieder des Gremiums zu setzen oder nutze {\normalfont\texttt{\textbackslash mitgliederlistefalse}} um diese Zeile nicht anzuzeigen.}}
+\newcommand \default@FS@anwesende   {{\itshape Benutze {\normalfont \texttt{\textbackslash anwesende}}, um die Anwesenden zu setzen.}}
+\newcommand \default@FS@fehlende    {\texttt{\textbackslash fehlende}}
+\newcommand \default@FS@entfehlende {\texttt{\textbackslash entfehlende}}
 
 
 \NewDocumentCommand \leiter {o m} {%
