@@ -2,7 +2,7 @@
 %% Identification
 %%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fs-protokoll}[2021/11/06 Protokollklasse fuer Protokolle der FS Mathematik]
+\ProvidesClass{fs-protokoll}[2022/01/05 Protokollklasse fuer Protokolle der FS Mathematik]
 
 %%
 %% OPTIONS
