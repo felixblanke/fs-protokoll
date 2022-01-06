@@ -599,7 +599,7 @@
     \par\endgroup%
 }
 
-\AtBeginDocument{%
+\AfterEndPreamble{%
     % we leave \FS@mitglieder and \FS@anwesende undefined by default to check for a user initialization
     \ifmitgliederliste%
         % if mitgliederliste is activated, members must be specified
@@ -611,7 +611,7 @@
     \fi
 }
 
-\AtBeginDocument{
+\AfterEndPreamble{
     \thispagestyle{firstpage}
 
     \ifdefined\FS@titel
