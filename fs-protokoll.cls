@@ -70,7 +70,6 @@
 \RequirePackage{babel}             % localization
 
 \RequirePackage{xparse}            % allow improved definition of commands
-\RequirePackage{environ}           % allow improved definition of new environments
 \RequirePackage{mathtools}         % default math commands, loads amsmath internally
 \RequirePackage{microtype}         % improved micro-typography: character protrusion and font expansion are enabled by default.
 
@@ -392,10 +391,15 @@
 
 
 %Defines an environment which is visible only if oeffentlichesprotokollfalse
-\NewEnviron{nichtoeff}{%
+% Note on the implementation:
+%     the argument 'b' contains the body of the environment
+%     the prefix '+' allows it to span multiple paragraphs
+%     by default, spaces are trimmed at both ends of the body
+%     to disable it, we could use the prefix '!'
+\NewDocumentEnvironment{nichtoeff}{+b}{%
     \ifoeffentlichesprotokoll%
     \else%
-        \BODY%
+        #1%
     \fi%
 }
 
