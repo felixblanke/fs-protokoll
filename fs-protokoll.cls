@@ -215,7 +215,7 @@
 \ifFS@draft
     % draft watermark
     \RequirePackage{draftwatermark}
-    \SetWatermarkText{\FS@drafttext}
+    \DraftwatermarkOptions{text=\FS@watermark@draft}
 
     % Use draft mode of KoMa class
     \KOMAoptions{draft}
@@ -606,6 +606,18 @@
     \par\endgroup%
 }
 
+\AtBeginDocument{%
+    \ifoeffentlichesprotokoll\empty
+    \else%
+        % non-public watermark
+        \RequirePackage{draftwatermark}%
+        \ifFS@draft%
+            \DraftwatermarkOptions{text=\FS@watermark@draft\\\FS@watermark@nonpublic}%
+        \else%
+            \DraftwatermarkOptions{text=\FS@watermark@nonpublic}%
+        \fi%
+    \fi
+}
 \AfterEndPreamble{%
     % we leave \FS@mitglieder and \FS@anwesende undefined by default to check for a user initialization
     \ifmitgliederliste%
