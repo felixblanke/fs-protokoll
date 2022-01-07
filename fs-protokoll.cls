@@ -118,7 +118,8 @@
     \textbf{??}%
 }
 
-\providecommand* \FS@drafttext                  {\FS@lang@error{\FS@drafttext}}
+\providecommand* \FS@watermark@draft            {\FS@lang@error{\FS@watermark@draft}}
+\providecommand* \FS@watermark@nonpublic        {\FS@lang@error{\FS@watermark@nonpublic}}
 \providecommand* \FS@attendingmembers@title     {\FS@lang@error{\FS@attendingmembers@title}}
 \providecommand* \FS@attending@title            {\FS@lang@error{\FS@attending@title}}
 \providecommand* \FS@attending@titlewithmembers {\FS@lang@error{\FS@attending@titlewithmembers}}
@@ -149,7 +150,8 @@
 
 
 \AtBeginDocument{%
-    \providecaptionname{ngerman}{\FS@drafttext}{Entwurf}%
+    \providecaptionname{ngerman}{\FS@watermark@draft}{Entwurf}%
+    \providecaptionname{ngerman}{\FS@watermark@nonpublic}{Nicht-öffentlich}%
     \providecaptionname{ngerman}{\FS@attendingmembers@title}{Anwesende Mitglieder:}%
     \providecaptionname{ngerman}{\FS@attending@title}{Anwesende:}%
     \providecaptionname{ngerman}{\FS@attending@titlewithmembers}{Weitere Anwesende:}%
@@ -160,7 +162,7 @@
     \providecaptionname{ngerman}{\FS@beginn@title}{Beginn:}%
     \providecaptionname{ngerman}{\FS@ende@title}{Ende:}%
     \providecaptionname{ngerman}{\FS@date@prefix}{vom}%
-    \providecaptionname{ngerman}{\FS@minutes@prefix@nonpublic}{Unöffentliches}%
+    \providecaptionname{ngerman}{\FS@minutes@prefix@nonpublic}{Nicht-öffentliches}%
     \providecaptionname{ngerman}{\FS@minutes@title@public}{Protokoll}%
     \providecaptionname{ngerman}{\FS@minutes@title@nonpublic}{Protokoll}%
     \providecaptionname{ngerman}{\FS@session@title}{Sitzung}%
@@ -179,7 +181,8 @@
     \providecaptionname{ngerman}{\FS@termtable@heading}{Kommende Termine}%
     \providecaptionname{ngerman}{\FS@page@title}{Seite}%
 %
-    \providecaptionname{english}{\FS@drafttext}{Draft}%
+    \providecaptionname{english}{\FS@watermark@draft}{draft}%
+    \providecaptionname{english}{\FS@watermark@nonpublic}{non-public}%
     \providecaptionname{english}{\FS@attendingmembers@title}{Present members:}%
     \providecaptionname{english}{\FS@attending@title}{Attendees:}%
     \providecaptionname{english}{\FS@attending@titlewithmembers}{Other attendees:}%
