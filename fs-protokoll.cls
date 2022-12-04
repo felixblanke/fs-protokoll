@@ -30,6 +30,8 @@
 
 \DeclareBoolOption{hyphens}
 
+\DeclareBoolOption{nologo}
+
 \DeclareStringOption[none]{gremium}
 
 \DeclareStringOption[12]{DIV}
@@ -453,40 +455,45 @@
     contents={\ifPunchmark\leftmarkline{\punchmarklength}\fi}
 }]{punchmark}
 
-\newlength{\disttobordernorth}
-\newlength{\disttobordereast}
-\newlength{\logosize}
-
-\setlength{\disttobordernorth}{1cm}
-\setlength{\disttobordereast}{1.25cm}
-\setlength{\logosize}{28mm}
-
-\DeclareNewLayer[
-    foreground,
-    align=tr,
-    area={\dimexpr \paperwidth-\disttobordereast\relax}{\disttobordernorth}{\logosize}{\logosize},
-    contents={%
-        \includegraphics[width=\logosize]{\FS@logofile}
-        \ifinternet%
-            \vspace{1\parskip}%
-            \begin{flushright}%
-                \linespread{0.9}\selectfont%
-                \begingroup\footnotesize\hypersetup{urlcolor=black}%
-                    \FS@internetslogan\\[1ex]
-                    \href{https://fsmath.uni-bonn.de}{fsmath.uni-bonn.de}
-                    %\url{fsmath.uni-bonn.de}
-                \endgroup%
-            \end{flushright}%
-        \fi%
-    }
-]{box-logo}
-
 \DeclareLayer[clone=scrheadings.foot.oneside]{customfoot1}
 \DeclareLayer[clone=scrheadings.foot.odd]{customfoot2}
 \DeclareLayer[clone=scrheadings.foot.even]{customfoot3}
 
-% add the wanted fold marks to the layer page style(s) used on subsequent pages
-\DeclareNewPageStyleByLayers{firstpage}{tfoldmark,bfoldmark,punchmark, customfoot1, customfoot2, customfoot3, box-logo}
+\ifFS@nologo
+    % add the wanted fold marks to the layer page style(s) used on subsequent pages
+    \DeclareNewPageStyleByLayers{firstpage}{tfoldmark,bfoldmark,punchmark, customfoot1, customfoot2, customfoot3}
+\else
+    \newlength{\disttobordernorth}
+    \newlength{\disttobordereast}
+    \newlength{\logosize}
+
+    \setlength{\disttobordernorth}{1cm}
+    \setlength{\disttobordereast}{1.25cm}
+    \setlength{\logosize}{28mm}
+
+    \DeclareNewLayer[
+        foreground,
+        align=tr,
+        area={\dimexpr \paperwidth-\disttobordereast\relax}{\disttobordernorth}{\logosize}{\logosize},
+        contents={%
+            \includegraphics[width=\logosize]{\FS@logofile}
+            \ifinternet%
+                \vspace{1\parskip}%
+                \begin{flushright}%
+                    \linespread{0.9}\selectfont%
+                    \begingroup\footnotesize\hypersetup{urlcolor=black}%
+                        \FS@internetslogan\\[1ex]
+                        \href{https://fsmath.uni-bonn.de}{fsmath.uni-bonn.de}
+                        %\url{fsmath.uni-bonn.de}
+                    \endgroup%
+                \end{flushright}%
+            \fi%
+        }
+    ]{box-logo}
+
+    % add the wanted fold marks to the layer page style(s) used on subsequent pages
+    \DeclareNewPageStyleByLayers{firstpage}{tfoldmark,bfoldmark,punchmark, customfoot1, customfoot2, customfoot3, box-logo}
+\fi
 
 %%
 %% LAYOUT
@@ -678,14 +685,19 @@
         \def \FS@titleformatting {}
     \fi
     \begin{addmargin}[\TOPindent]{0cm}
-        % formerly: \textwidth - \TOPindentcorrection
-        \parbox[t]{\dimexpr%
-                    % Actual width of the line:
-                    \paperwidth - \oddsidemargin - \logosize - \disttobordereast + \TOPindent
-                    % add some spacing from the Logo
-                    - 0.5\disttobordereast%
-                    \relax}%
-                    {\Large\bfseries\FS@titleformatting \FS@titel~\FS@date@prefix~\FS@date}
+        \ifFS@nologo
+            \parbox[t]{\textwidth - \TOPindentcorrection}%
+                      {\Large\bfseries\FS@titleformatting \FS@titel~\FS@date@prefix~\FS@date}
+        \else
+            % formerly: \textwidth - \TOPindentcorrection
+            \parbox[t]{\dimexpr%
+                        % Actual width of the line:
+                        \paperwidth - \oddsidemargin - \logosize - \disttobordereast + \TOPindent
+                        % add some spacing from the Logo
+                        - 0.5\disttobordereast%
+                        \relax}%
+                        {\Large\bfseries\FS@titleformatting \FS@titel~\FS@date@prefix~\FS@date}
+        \fi
 
         \vspace{2\baselineskip}
         {%

@@ -12,6 +12,7 @@ At the moment the following document class arguments are supported:
 * `raggedtitle`: *flag*, formats the title as `\raggedright` instead of the justification
 * `TOPindent`: *length*, the length of indentation of the agenda item headings (*default: -1.25cm*)
 * `logofile`: *string*, file from which the logo is loaded (*default: fs-logo-transparent.png*)
+* `nologo`: *flag*: Do not display a logo on the first page.
 * `hyphens`: *flag*, allows linebreaks on hyphens in hyperlinks
 
 ### Further settings
