@@ -408,6 +408,18 @@
     \fi%
 }
 
+%Defines an environment which is visible only if oeffentlichesprotokoll true
+% Note on the implementation:
+%     the argument 'b' contains the body of the environment
+%     the prefix '+' allows it to span multiple paragraphs
+%     by default, spaces are trimmed at both ends of the body
+%     to disable it, we could use the prefix '!'
+\NewDocumentEnvironment{oeff}{+b}{%
+    \ifoeffentlichesprotokoll%
+        #1%
+    \fi%
+}
+
 \newcommand \anhang [1] {\newcommand\FS@following{#1}}
 
 %% SEITEN-EINSTELLUNGEN
