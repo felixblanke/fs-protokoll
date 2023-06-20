@@ -55,4 +55,4 @@ The following settings can be changed by writing `\SETTINGNAMEtrue` or `\SETTING
 ### defined environments
 * `nominationtable`: 
 * `antragstable`: 
-* `nichtoeff`:
+* `oeff` / `nichtoeff`: Contained content is only shown if the flag `oeffentlichesprotokoll` is set / not set.
